@@ -1,6 +1,0 @@
-#function to search in a dictionary
-def get_key_value_from_city(city, key):
-  output = f'{key} not defined'
-  if key in city.keys():
-    output =  city[key]
-  return output
