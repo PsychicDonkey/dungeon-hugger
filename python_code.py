@@ -31,3 +31,12 @@ for company_info in microsoft_companies:
     if company_info['fields']['name'] == "microsoft":
         exact_microsoft_companies.append(company_info)
 print(len(exact_microsoft_companies))
+
+#create a table from a JSON
+all_products = []
+for category in gwz_products_translated:
+    for subcategory in gwz_products_translated[category]:
+        for product in gwz_products_translated[category][subcategory]:
+            all_products.append({'category' : category ,'subcategory' : subcategory,'product' : product})
+df=pd.DataFrame(all_products)
+df #will show the dataframe
