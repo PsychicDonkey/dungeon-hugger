@@ -24,3 +24,10 @@ def modify_city_key_value(city_name, key, value):
             else:
                 output = f"{key} doesn't exist."
     return output
+
+#add elements to list
+exact_microsoft_companies = []
+for company_info in microsoft_companies:
+    if company_info['fields']['name'] == "microsoft":
+        exact_microsoft_companies.append(company_info)
+print(len(exact_microsoft_companies))
