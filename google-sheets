@@ -1,3 +1,5 @@
+#count of editorial focus area
+
 =IFERROR(
 IFS(
 REGEXMATCH($E4,"maverick news")
@@ -37,5 +39,48 @@ REGEXMATCH($E4,"maverick news")
   +IF(REGEXMATCH($Z4,"corporate=governance"),1,0)
   +IF(REGEXMATCH($Z4,"esg"),1,0)
   +IF(REGEXMATCH($Z4,"social-and-economic-stability"),1,0)
+),""
+)
+
+#write editorial theme to cell
+=IFERROR(
+IFS(
+AND(REGEXMATCH($E2,"maverick news"),$AA2=1)
+  ,IFERROR(REGEXEXTRACT($Z2,"politics"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"society-and-memory"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"governance-and-service-delivery"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"education-and-youth"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"crime-and-justice"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"hope-and-solutions"),"")
+,AND(REGEXMATCH($E2,"maverick citizen"),$AA2=1)
+  ,IFERROR(REGEXEXTRACT($Z2,"policies-and-practices"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"food-justice"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"healthcare"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"active-citizenry"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"education-and-youth"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"human-health-well-being"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"security-matters"),"")
+,AND(REGEXMATCH($E2,"our burning planet"),$AA2=1)
+  ,IFERROR(REGEXEXTRACT($Z2,"ecosystem-damage-biodiversity-loss"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"energy-impact-social-economic-dev"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"flood-disaster"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"food-insecurity"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"global-heating"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"human-health-well-being"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"pollution"),"")
+,AND(REGEXMATCH($E2,"maverick life"),$AA2=1)
+  ,IFERROR(REGEXEXTRACT($Z2,"live-smarter"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"escape"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"satire"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"documentary"),"")
+,AND(REGEXMATCH($E2,"business maverick"),$AA2=1)
+  ,IFERROR(REGEXEXTRACT($Z2,"food-security"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"corruption"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"wealth-generation"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"consumer-protection"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"financial-stability"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"corporate=governance"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"esg"),"")
+  &IFERROR(REGEXEXTRACT($Z2,"social-and-economic-stability"),"")
 ),""
 )
